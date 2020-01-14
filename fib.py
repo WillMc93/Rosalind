@@ -15,4 +15,4 @@ def fib(n, k):
 	return f1 + f2
 
 if __name__ == '__main__':
-	print(fib(31, 4)) 
+	print(fib(6, 3)) 
