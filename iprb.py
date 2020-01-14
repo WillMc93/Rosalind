@@ -1,6 +1,6 @@
 """
 The dumbest way to do this.
-I'm sure there is a numerical solution, but I'm too stupid right now.
+I'm 100% sure there is a numerical solution, but I'm too stupid right now.
 """
 
 file = './datasets/rosalind_IPRB.txt'
