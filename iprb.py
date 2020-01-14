@@ -1,27 +1,58 @@
+"""
+The dumbest way to do this.
+I'm sure there is a numerical solution, but I'm too stupid right now.
+"""
+
 file = './datasets/rosalind_IPRB.txt'
 
 from itertools import combinations
 
+
+def mendel(p1, p2, results=list()):
+	if p1 == 'k' or p2 == 'k':
+		results += ['dom'] * 4
+
+	elif p1 == 'm' and p2 == 'm':
+		results += ['dom'] * 3 + ['rec']
+
+	elif p1 == 'm' and p2 == 'n':
+		results += ['dom'] * 2 + ['rec'] * 2
+
+	elif p1 == 'n' and p2 == 'n':
+		results += ['rec'] * 4
+
+	else:
+		mendel(p2, p1, results)
+
+	return results
+
+
 def iprb(file):
 	k,m,n = [0]*3
+
+	population = list()
+	total = 0
 
 	with open(file) as f:
 
 		data = f.readline()
 		data.strip()
 
-		k,m,n = data.split(' ')
+		k,m,n = [int(x) for x in data.split(' ')]
 
-	total = 2 * (k + m + n)
+		population = ['k'] * k + ['m'] * m + ['n'] * n
+		total = k + m + n
 
-	assert(total > 0)
+	results = list()
+	for p1, p2 in combinations(population, 2):
+		results = mendel(p1, p2, results)
 
-	k_prob = 2*k / total
-	m_prob = m / total
-	n_prob = n / total
+	doms = 0
+	for off in results:
+		if off == 'dom':
+			doms += 1
 
-	total_prob = 0
+	return doms/len(results)
 
-	for prob1, prob2 in combinations([k_prob, m_prob, n_prob]):
-
-
+if __name__ == '__main__':
+	print(iprb(file))
