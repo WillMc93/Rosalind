@@ -12,4 +12,3 @@ def fasta_read(file):
 			outp[seq.id]  = str(seq.seq)
 
 	return outp
-
