@@ -1,5 +1,5 @@
 from Bio import SeqIO
-import pycurl
+import requests
 import io
 
 UNIPROT_URL = lambda ID: f'https://www.uniprot.org/uniprot/{ID}.fasta'
@@ -35,4 +35,6 @@ def fasta_read_raw(fasta):
 def get_uniprot_fasta(ID):
 	url = UNIPROT_URL(ID)
 
-	data = 
+	data = requests.get(url)
+
+	return data.text
