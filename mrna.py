@@ -1,4 +1,4 @@
-from rna_table import codon_lookup
+from codon_tables import codon_lookup
 
 file = './datasets/rosalind_mrna.txt'
 

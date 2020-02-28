@@ -1,8 +1,8 @@
 # http://www.petercollingridge.co.uk/tutorials/bioinformatics/codon-table/
 
 class tables:
-	def __init__(self):
-		bases = "tcag"
+	def __init__(self, nuc_type='DNA'):
+		bases = "tcag" if nuc_type == 'DNA' else ucag 
 		codons = [a + b + c for a in bases for b in bases for c in bases]
 		amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
 		
