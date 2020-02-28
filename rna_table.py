@@ -27,7 +27,6 @@ def acid_lookup(codon, tables=tables):
 	return acid
 
 def codon_lookup(acid, tables=tables):
-	import pdb
 	codons = [None]
 
 	try:

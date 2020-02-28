@@ -9,8 +9,7 @@ def calculate(polypep):
 	combos = 1
 	for aa in polypep:
 		combos *= len(codon_lookup(aa))
-		print(codon_lookup(aa))
-		combos = combos % 1e6
+		combos = combos % int(1e6)
 
 	return combos
 
