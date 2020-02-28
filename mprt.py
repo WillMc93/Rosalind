@@ -16,7 +16,6 @@ def regexify(motif=motif):
 
 	return motif
 
-
 def check_for_motif(ID, motif=motif):
 
 	# make motif into regex and compile
@@ -34,10 +33,14 @@ def check_for_motif(ID, motif=motif):
 
 	# find all matches for the motif
 	results = []
-	for m in pattern.finditer(data):
-		loc = m.start() + 1
-		loc = str(loc) + ' '
-		results.append(loc)
+	pos = 0
+	while True:
+		result = pattern.search(data, pos)
+
+		if result is None:
+			break
+		results.append(result.start()+1)
+		pos = result.start() + 1
 
 	return results
 
@@ -52,4 +55,9 @@ if __name__ == '__main__':
 			outp = ''
 			if len(results) > 0:
 				print(ID)
-				print(outp.join(results))
+				outp = ""
+				for result in results:
+					outp += str(result) + " "
+
+				print(outp)
+
