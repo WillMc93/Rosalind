@@ -17,7 +17,6 @@ def regexify(motif=motif):
 	return motif
 
 def check_for_motif(ID, motif=motif):
-
 	# make motif into regex and compile
 	motif = regexify(motif)
 
@@ -32,6 +31,7 @@ def check_for_motif(ID, motif=motif):
 	_, data = list(data.items())[0]
 
 	# find all matches for the motif
+	# https://mail.python.org/pipermail/tutor/2005-September/041120.html
 	results = []
 	pos = 0
 	while True:
