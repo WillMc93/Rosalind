@@ -2,7 +2,8 @@
 
 class tables:
 	def __init__(self, nuc_type='DNA'):
-		bases = "tcag" if nuc_type == 'DNA' else ucag 
+		bases = "tcag" if nuc_type == 'DNA' else "ucag"
+
 		codons = [a + b + c for a in bases for b in bases for c in bases]
 		amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
 		
@@ -20,7 +21,7 @@ tables = tables()
 def acid_lookup(codon, tables=tables):
 	acid = ''
 	try:
-		acid = tables.codon_to_acid[codon]
+		acid = tables.codon_to_acid[codon.lower()]
 	except KeyError:
 		acid = acid
 

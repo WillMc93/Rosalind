@@ -19,7 +19,7 @@ def fasta_parse(file_obj):
 def fasta_read(file_path):
 	outp = dict()
 
-	with open(file) as inp:
+	with open(file_path) as inp:
 		outp = fasta_parse(inp)
 
 	return outp
@@ -30,6 +30,15 @@ def fasta_read_raw(fasta):
 	file = io.StringIO(fasta)
 	
 	return fasta_parse(file)
+
+def just_seq(fasta_dict):
+	sequences = list()
+
+	for _, seq in fasta_dict.items():
+		sequences.append(seq)
+
+	return sequences
+
 
 # gather fasta data from uniprot
 def get_uniprot_fasta(ID):
